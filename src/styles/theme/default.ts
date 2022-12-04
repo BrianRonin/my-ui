@@ -1,0 +1,57 @@
+export const DefaultTheme = {
+  name: 'default',
+  colors: {
+    primary: '#000000',
+    secondary: '#dc143c',
+    text: '#333333',
+    bg: '#ffffff',
+    primaryBg: '#0A1128',
+    secondaryBg: 'white',
+    darkBg: '#0A1128',
+    white: '#FFFFFF',
+    mediumGray: '#DDDDDD',
+    darkGray: '#4f4f4fff',
+  },
+  fonts: {
+    family: {
+      default:
+        'Zen Dots, roboto, Open Sans, sans-serif',
+    },
+    sizes: {
+      xsmall: '8rem',
+      small: '1.6rem',
+      medium: '2.4rem',
+      large: '3.2rem',
+      xlarge: '4.0rem',
+      xxlarge: '4.8rem',
+      huge: '5.6rem',
+      xhuge: '6.4rem',
+    },
+  },
+  sizes: {
+    xsmall: '8rem',
+    small: '1.6rem',
+    medium: '2.4rem',
+    large: '3.2rem',
+    xlarge: '4.0rem',
+    xxlarge: '4.8rem',
+    huge: '5.6rem',
+    xhuge: '6.4rem',
+    max: '96rem',
+    content: '80rem',
+  },
+  media: {
+    medium: '(max-width: 768px)',
+    small: '(max-width: 360px)',
+  },
+  spacings: {
+    xsmall: '8rem',
+    small: '1.6rem',
+    medium: '2.4rem',
+    large: '3.2rem',
+    xlarge: '4.0rem',
+    xxlarge: '4.8rem',
+    huge: '5.6rem',
+    xhuge: '6.4rem',
+  },
+}
