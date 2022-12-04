@@ -1,7 +1,7 @@
 export const DefaultTheme = {
   name: 'default',
   colors: {
-    primary: '#000000',
+    primary: '#b0a65a',
     secondary: '#dc143c',
     text: '#333333',
     bg: '#ffffff',

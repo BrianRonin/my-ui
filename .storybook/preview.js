@@ -21,9 +21,16 @@ import { ThemeProvider } from '@emotion/react'
 //   )
 // }
 
+const getCustomFieldSnippet = (selectedValue) => {
+  const { namespace, name } = selectedValue
+  const path = namespace.join('.')
+  const fullPath = `${path}.${name}`
+  const themeProp = `\${({ theme }) => theme.${fullPath}}`
+  return themeProp
+}
+
 export const onThemeSwitch = (context) => {
   const { theme } = context
-  console.log(context)
   const parameters = {
     backgrounds: {
       default: theme.colors.bg,
@@ -42,6 +49,7 @@ addDecorator(
     [DefaultTheme, dark_theme],
     {
       onThemeSwitch,
+      getCustomFieldSnippet,
     },
   ),
 )

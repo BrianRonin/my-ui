@@ -4,7 +4,7 @@ export const dark_theme = {
   ...DefaultTheme,
   name: 'dark',
   colors: {
-    primary: '#ffffff',
+    primary: '#d3d477',
     text: '#ffffff',
     secondary: '#dc143c',
     primaryBg: '#ffffff',
