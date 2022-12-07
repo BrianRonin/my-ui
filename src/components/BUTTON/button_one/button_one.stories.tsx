@@ -1,3 +1,4 @@
+import { CgAddR } from 'react-icons/cg'
 import {
   Meta,
   Story,
@@ -17,6 +18,10 @@ export default {
 export const Template: Story<buttonOneProps> = (
   args,
 ) => <ButtonOne {...args} />
+
+export const WithIcon: Story<buttonOneProps> = (
+  args,
+) => <ButtonOne {...args} icon={<CgAddR />} />
 
 Template.parameters = {
   layout: 'fullscren',

@@ -41,7 +41,7 @@ export const FormPost = ({
   }
 
   return (
-    <S.Main>
+    <S.Main onSubmit={handleSubmit}>
       <InputOne
         name='post-title'
         label='Titulo'
@@ -55,7 +55,7 @@ export const FormPost = ({
         onChange={(v) => setNewContent(v)}
         as='textarea'
       />
-      <ButtonOne>
+      <ButtonOne disabled={saving} type='submit'>
         {saving ? 'Salvando...' : 'Salvar'}
       </ButtonOne>
     </S.Main>

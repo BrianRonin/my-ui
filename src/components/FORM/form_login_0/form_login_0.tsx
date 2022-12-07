@@ -30,7 +30,7 @@ export const FormLogin0 = ({
   }
 
   return (
-    <S.Main>
+    <S.Main onSubmit={handleSubmit}>
       <InputOne
         name='user-identifier'
         label='e-mail'

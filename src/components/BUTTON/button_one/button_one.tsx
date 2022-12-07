@@ -1,4 +1,7 @@
-import { ReactNode } from 'react'
+import {
+  ButtonHTMLAttributes,
+  ReactNode,
+} from 'react'
 import * as S from './S.button_one'
 
 export type buttonOneProps = {
@@ -6,7 +9,7 @@ export type buttonOneProps = {
   disabled?: boolean
   onClick?: () => void
   icon?: ReactNode
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>
 
 export const ButtonOne = ({
   children,
