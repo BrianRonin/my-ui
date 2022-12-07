@@ -31,13 +31,7 @@ export default {
 export const Template: Story<inputOneProps> = (
   args,
 ) => {
-  return (
-    <div
-      style={{ display: 'flex', width: '50vw' }}
-    >
-      <InputOne {...args} />
-    </div>
-  )
+  return <InputOne {...args} />
 }
 
 export const OnError: Story<inputOneProps> = (

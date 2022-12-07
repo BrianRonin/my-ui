@@ -3,9 +3,9 @@ import * as S from './S.button_one'
 
 export type buttonOneProps = {
   children: ReactNode
-  disabled: boolean
-  onClick: () => void
-  icon: ReactNode
+  disabled?: boolean
+  onClick?: () => void
+  icon?: ReactNode
 }
 
 export const ButtonOne = ({

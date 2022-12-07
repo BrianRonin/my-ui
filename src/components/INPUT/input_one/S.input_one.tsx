@@ -32,7 +32,6 @@ const onInputError = (
 
 export const Main = styled.div`
   ${({ theme }) => css`
-    width: 100%;
     margin-bottom: ${theme.spacings.large};
     box-sizing: border-box;
   `}
@@ -44,12 +43,14 @@ export const inputContainer = styled.div<{
 }>`
   ${({ theme, errorMesage, hasIcon }) => css`
     position: relative;
+    display: flex;
+
     > svg {
       pointer-events: none;
       position: absolute;
       top: 50%;
       transform: translate(0, -50%);
-      right: -4.5rem;
+      right: 13px;
       width: 2.5rem;
       height: 2.5rem;
       color: ${theme.colors.gray6};
@@ -92,9 +93,7 @@ export const Input = styled.input<StyledInputType>`
   ${({ theme, errorMessage, as }) => css`
     border: 1px solid ${theme.colors.gray3};
     width: 100%;
-    height: 100%;
     font-size: ${theme.fonts.sizes.normal};
-    /* transition: ${theme.transitions.fast}; */
     padding: ${theme.spacings.small} ${theme.spacings.xsmall};
     background: ${theme.colors.white};
     padding-right: 4rem;
