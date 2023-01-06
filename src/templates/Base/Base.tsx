@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { ToggleTheme } from '../../components/TOGGLE/toggle_theme/toggle_theme'
+import { ToggleTheme } from '../../components/Toggle/toggle_theme/toggle_theme'
 import * as S from './S.Base'
 
 export type baseProps = {

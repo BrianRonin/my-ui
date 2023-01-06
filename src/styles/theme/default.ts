@@ -1,21 +1,65 @@
 export const DefaultTheme = {
   name: 'default',
   colors: {
-    primary: '#b0a65a',
-    secondary: '#dc143c',
-    text: '#333333',
-    bg: '#ffffff',
-    primaryBg: '#0A1128',
-    secondaryBg: 'white',
-    darkBg: '#0A1128',
-    mediumGray: '#DDDDDD',
-    darkGray: '#4f4f4fff',
-    warning: 'rgb(247, 38, 115)',
-    success: 'rgb(172, 243, 157)',
+    deepBlack: '#000000',
+    deepWhite: '#ffffff',
+
+    // ? para fazer uma cor boa escolha bastante tons
+    // ? hsl(matriz, saturação, brilho, alpha)
+    // ? as cores quentes estão perto de amarelo e frias de azul
+    // ? Cores quentes 0 <-- 250 --> 360 afastão de 250
+    // ? Cores frias  0 --> 250 <-- 360 aproximão de 250
+    // * 1) matriz +6 fria, brilho +20%
+    // * 2) matriz +3 fria, brilho +10%
+    // * 3) cor primaria
+    // * 4) matriz +3 quente, brilho -10%
+    // * 5) matriz +6 quente, brilho -20%
+    // ? isso que eu desenvolvi não é uma regra, é uma ideia
+
+    primary: [
+      'hsl(60, 35%, 70%)',
+      'hsl(56, 35%, 60%)',
+      'hsl(53, 35%, 50%)',
+      'hsl(56, 35%, 40%)',
+      'hsl(58, 35%, 30%)',
+    ],
+    secondary: [
+      'hsl(330, 83%, 70%)',
+      'hsl(338, 83%, 60%)',
+      'hsl(348, 82%, 50%)',
+      'hsl(350, 83%, 40%)',
+      'hsl(360, 83%, 30%)',
+    ],
+    text: [
+      'hsl(0, 0%, 80%)',
+      'hsl(0, 0%, 60%)',
+      'hsl(0, 0%, 40%)',
+      'hsl(0, 0%, 20%)',
+      'hsl(0, 0%, 0%)',
+    ],
+    bg: [
+      'hsl(0, 0%, 80%)',
+      'hsl(0, 0%, 60%)',
+      'hsl(0, 0%, 40%)',
+      'hsl(0, 0%, 20%)',
+      'hsl(0, 0%, 0%)',
+    ],
+    warning: [
+      '#fa7dab',
+      '#f9518f',
+      '#f72673',
+      '#c61e5c',
+      '#941745',
+    ],
+    success: [
+      'hsl(110, 78%, 90%)',
+      'hsl(110, 78%, 80%)',
+      'hsl(110, 78%, 78%)',
+      'hsl(100, 75%, 60%)',
+      'hsl(110, 70%, 50%)',
+    ],
     info: 'rgb(85, 193, 255)',
-    deepBlack: 'rgb(0, 0, 0)',
-    deepWhite: 'rgb(255, 255, 255)',
-    white: 'rgb(250, 250, 253)',
+    white: 'rgb(255, 255, 255)',
     gray0: 'rgb(245, 245, 253)',
     gray1: 'rgb(241, 241, 243)',
     gray2: 'rgb(221, 221, 223)',

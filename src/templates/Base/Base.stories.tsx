@@ -6,7 +6,7 @@ import { Base, baseProps } from './Base'
 import { mock_base } from './M.Base'
 
 export default {
-  title: 'components/base',
+  title: 'templates/base',
   component: Base,
   args: mock_base,
 } as Meta

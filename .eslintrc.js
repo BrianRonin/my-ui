@@ -47,5 +47,6 @@ module.exports = {
       'error',
       { ignore: ['css'] },
     ],
+    'no-empty': 0,
   },
 }

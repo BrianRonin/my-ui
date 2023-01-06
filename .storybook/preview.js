@@ -4,7 +4,7 @@ import { DefaultTheme } from '../src/styles/theme/default'
 import { dark_theme } from '../src/styles/theme/dark'
 import { ThemeProvider } from '@emotion/react'
 import { GlobalStyles } from '../src/styles/globals'
-import { Theme } from '../src/contexts/theme/theme'
+// import { Theme } from '../src/contexts/theme/theme'
 
 // import styled from '@emotion/styled'
 // const background = styled.div`
@@ -13,11 +13,10 @@ import { Theme } from '../src/contexts/theme/theme'
 // `
 const ProviderTheme = ({ theme, children }) => {
   return (
-    <Theme _theme={theme}>
-      <background></background>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
       {children}
-    </Theme>
+    </ThemeProvider>
   )
 }
 
@@ -45,12 +44,11 @@ export const onThemeSwitch = (context) => {
 
 addDecorator(
   withThemes(
-    ThemeProvider,
+    ProviderTheme,
     [DefaultTheme, dark_theme],
     {
       onThemeSwitch,
     },
-    ProviderTheme,
   ),
 )
 
