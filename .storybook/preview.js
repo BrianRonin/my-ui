@@ -32,7 +32,7 @@ export const onThemeSwitch = (context) => {
   const { theme } = context
   const parameters = {
     backgrounds: {
-      default: theme.colors.bg,
+      default: theme.colors.bg[0],
     },
 
     // Pass backgrounds: null to disable background switching at all

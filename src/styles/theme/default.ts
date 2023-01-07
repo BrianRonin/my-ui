@@ -1,78 +1,156 @@
+import {
+  hslProps,
+  makeHsl,
+} from '../../utils/make-hsl'
+
+// ? para fazer uma cor boa escolha bastante tons
+// ? hsl(matriz, saturação, brilho, alpha)
+// ? as cores quentes estão perto de amarelo e frias de azul
+// ? Cores quentes 0 <-- 250 --> 360 afastão de 250
+// ? Cores frias  0 --> 250 <-- 360 aproximão de 250
+// * 1) matriz +6 fria, brilho +20%
+// * 2) matriz +3 fria, brilho +10%
+// * 3) cor primaria
+// * 4) matriz +3 quente, brilho -10%
+// * 5) matriz +6 quente, brilho -20%
+// ? isso que eu desenvolvi não é uma regra, é uma ideia
+
+export const cl_primary = {
+  color: 'hsl(53, 35%, 50%)',
+  length: 5,
+  position: 'middle',
+  incMatrix: 10,
+  incLight: 22,
+} as hslProps
+
+export const cl_secondary = {
+  color: 'hsl(296, 30%, 44%)',
+  length: 5,
+  position: 'middle',
+  incMatrix: 10,
+  incLight: 14,
+} as hslProps
+
+export const cl_text = {
+  color: 'hsl(52, 20%, 90%)',
+  length: 5,
+  position: 'start',
+  incMatrix: 3,
+  incLight: 21,
+  incSaturation: 5,
+} as hslProps
+
+export const cl_bg = {
+  color: '#ffffff',
+  length: 5,
+  position: 'start',
+  incLight: 20,
+  orderLight: true,
+} as hslProps
+
+export const cl_warning = {
+  color: 'hsl(41, 50%, 53%)',
+  length: 5,
+  position: 'middle',
+  incLight: 10,
+  incSaturation: 15,
+  incMatrix: 3,
+} as hslProps
+
+export const cl_success = {
+  color: 'hsl(148, 51%, 60%)',
+  length: 5,
+  position: 'middle',
+  incLight: 10,
+  incSaturation: 15,
+  incMatrix: 3,
+} as hslProps
+
+export const cl_info = {
+  color: 'hsl(286, 55%, 61%)',
+  length: 5,
+  position: 'middle',
+  incLight: 15,
+  incSaturation: 15,
+  incMatrix: 3,
+} as hslProps
+
+export const cl_black = {
+  color: 'hsl(0, 0%, 0%)',
+  length: 21,
+  position: 'start',
+  orderLight: true,
+  incLight: 5,
+} as hslProps
+
+export const cl_white = {
+  color: 'hsl(0, 0%, 100%)',
+  length: 21,
+  position: 'start',
+  incLight: 5,
+} as hslProps
+
 export const DefaultTheme = {
   name: 'default',
   colors: {
-    deepBlack: '#000000',
-    deepWhite: '#ffffff',
+    // 'hsl(73, 35%, 94%, 1)',
+    // 'hsl(63, 35%, 72%, 1)',
+    // 'hsl(53, 35%, 50%)',
+    // 'hsl(43, 35%, 28%, 1)',
+    // 'hsl(33, 35%, 6%, 1)',
 
-    // ? para fazer uma cor boa escolha bastante tons
-    // ? hsl(matriz, saturação, brilho, alpha)
-    // ? as cores quentes estão perto de amarelo e frias de azul
-    // ? Cores quentes 0 <-- 250 --> 360 afastão de 250
-    // ? Cores frias  0 --> 250 <-- 360 aproximão de 250
-    // * 1) matriz +6 fria, brilho +20%
-    // * 2) matriz +3 fria, brilho +10%
-    // * 3) cor primaria
-    // * 4) matriz +3 quente, brilho -10%
-    // * 5) matriz +6 quente, brilho -20%
-    // ? isso que eu desenvolvi não é uma regra, é uma ideia
+    primary: makeHsl(cl_primary),
 
-    primary: [
-      'hsl(60, 35%, 70%)',
-      'hsl(56, 35%, 60%)',
-      'hsl(53, 35%, 50%)',
-      'hsl(56, 35%, 40%)',
-      'hsl(58, 35%, 30%)',
-    ],
-    secondary: [
-      'hsl(330, 83%, 70%)',
-      'hsl(338, 83%, 60%)',
-      'hsl(348, 82%, 50%)',
-      'hsl(350, 83%, 40%)',
-      'hsl(360, 83%, 30%)',
-    ],
-    text: [
-      'hsl(0, 0%, 80%)',
-      'hsl(0, 0%, 60%)',
-      'hsl(0, 0%, 40%)',
-      'hsl(0, 0%, 20%)',
-      'hsl(0, 0%, 0%)',
-    ],
-    bg: [
-      'hsl(0, 0%, 80%)',
-      'hsl(0, 0%, 60%)',
-      'hsl(0, 0%, 40%)',
-      'hsl(0, 0%, 20%)',
-      'hsl(0, 0%, 0%)',
-    ],
-    warning: [
-      '#fa7dab',
-      '#f9518f',
-      '#f72673',
-      '#c61e5c',
-      '#941745',
-    ],
-    success: [
-      'hsl(110, 78%, 90%)',
-      'hsl(110, 78%, 80%)',
-      'hsl(110, 78%, 78%)',
-      'hsl(100, 75%, 60%)',
-      'hsl(110, 70%, 50%)',
-    ],
-    info: 'rgb(85, 193, 255)',
-    white: 'rgb(255, 255, 255)',
-    gray0: 'rgb(245, 245, 253)',
-    gray1: 'rgb(241, 241, 243)',
-    gray2: 'rgb(221, 221, 223)',
-    gray3: 'rgb(201, 201, 203)',
-    gray4: 'rgb(181, 181, 184)',
-    gray5: 'rgb(161, 161, 164)',
-    gray6: 'rgb(141, 141, 144)',
-    gray7: 'rgb(121, 121, 124)',
-    gray8: 'rgb(101, 101, 104)',
-    gray9: 'rgb(81, 81, 84)',
-    gray10: 'rgb(61, 61, 64)',
-    gray11: 'rgb(41, 41, 44)',
-    gray12: 'rgb(21, 21, 24)',
+    // 'hsl(292, 30%, 72%, 1)',
+    // 'hsl(294, 30%, 58%, 1)',
+    // 'hsl(296, 30%, 44%)',
+    // 'hsl(298, 30%, 30%, 1)',
+    // 'hsl(300, 30%, 16%, 1)'
+
+    secondary: makeHsl(cl_secondary),
+
+    // 'hsl(52, 20%, 90%)',
+    // 'hsl(49, 15%, 69%, 1)',
+    // 'hsl(46, 10%, 48%, 1)',
+    // 'hsl(43, 5%, 27%, 1)',
+    // 'hsl(40, 0%, 6%, 1)'
+
+    text: makeHsl(cl_text),
+
+    //   'hsl(0, 0%, 100%)',
+    //   'hsl(0, 0%, 70%, 1)',
+    //   'hsl(0, 0%, 40%, 1)',
+    //   'hsl(0, 0%, 10%, 1)',
+    //   'hsl(0, 0%, 0%, 1)'
+
+    bg: makeHsl(cl_bg),
+
+    // 'hsl(47, 80%, 73%, 1)',
+    // 'hsl(44, 65%, 63%, 1)',
+    // 'hsl(41, 50%, 53%)',
+    // 'hsl(38, 35%, 43%, 1)',
+    // 'hsl(35, 20%, 33%, 1)'
+
+    warning: makeHsl(cl_warning),
+
+    // 'hsl(154, 81%, 80%, 1)',
+    // 'hsl(151, 66%, 70%, 1)',
+    // 'hsl(148, 51%, 60%)',
+    // 'hsl(145, 36%, 50%, 1)',
+    // 'hsl(142, 21%, 40%, 1)'
+
+    success: makeHsl(cl_success),
+
+    // 'hsl(280, 85%, 81%, 1)',
+    // 'hsl(283, 70%, 71%, 1)',
+    // 'hsl(286, 55%, 61%)',
+    // 'hsl(289, 40%, 51%, 1)',
+    // 'hsl(292, 25%, 41%, 1)'
+
+    info: makeHsl(cl_info),
+
+    black: makeHsl(cl_black),
+    white: makeHsl(cl_white),
   },
   fonts: {
     family: {

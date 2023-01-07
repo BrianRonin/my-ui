@@ -42,7 +42,7 @@ export const Title = styled.h1<
   }) => css`
     color: ${light
       ? theme.colors.white
-      : theme.colors.primary};
+      : theme.colors.primary[3]};
     text-transform: ${uppercase
       ? 'uppercase'
       : 'none'};

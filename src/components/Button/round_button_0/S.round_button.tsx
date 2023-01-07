@@ -6,7 +6,7 @@ export const Main = styled.div<{
   styles?: inject_styles
 }>`
   ${({ theme, styles }) => css`
-    --background: ${theme.colors.primary};
+    --background: ${theme.colors.primary[3][2]};
     --scale-icon: 1.5;
     --size-container: 5rem;
 

@@ -1,11 +1,11 @@
 import { css, Theme } from '@emotion/react'
 import styled from '@emotion/styled'
-import { inject_styles } from '../../types/emotion'
+import { inject_styles } from '../../../types/emotion'
 let _showMenu = false
 
 const Default = (theme: Theme) => css`
-  color: ${theme.colors.white};
-  background: ${theme.colors.darkBg};
+  color: ${theme.colors.text[2]};
+  background: ${theme.colors.bg[2][4]};
   box-shadow: 0 10px 25px rgba(0, 0, 0, 1);
   font-size: 1.5rem;
   text-align: left;
@@ -43,13 +43,13 @@ export const Menu = styled.div<{
       opacity: 100%;
     }
     &::-webkit-scrollbar-thumb {
-      background: ${theme.colors.primary};
+      background: ${theme.colors.primary[3][2]};
       border-radius: 100vw;
     }
 
     @supports (scrollbar-color: red blue) {
       scrollbar-color: #0000000
-        ${theme.colors.primary};
+        ${theme.colors.primary[3][2]};
       scrollbar-width: thin;
     }
     left: 50%;
@@ -77,7 +77,7 @@ export const SearchContainer = styled.div<{
     box-sizing: border-box;
     margin-bottom: 0.5rem;
     padding: 5px;
-    border: 1px solid ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary[3][2]};
     border-radius: 5px;
     input {
       ${Default(theme)}
@@ -137,7 +137,7 @@ export const IconContainer = styled.div`
     svg {
       width: 3rem;
       height: 3rem;
-      color: ${theme.colors.primary};
+      color: ${theme.colors.primary[3]};
     }
   `}
 `
@@ -152,12 +152,12 @@ export const Option = styled.div<{
     cursor: pointer;
     ${isActive &&
     css`
-      color: ${theme.colors.primary};
+      color: ${theme.colors.primary[3]};
     `}
     &:hover {
       transition: border-left 50ms ease-in-out;
       border-left: solid 1rem
-        ${theme.colors.primary};
+        ${theme.colors.primary[3]};
       padding-right: 1rem;
       font-size: 1.8rem;
     }

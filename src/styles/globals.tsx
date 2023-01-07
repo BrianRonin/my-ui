@@ -20,9 +20,9 @@ export const GlobalStyles = () => {
           scroll-behavior: smooth;
         }
         body {
-          background: ${theme.colors.bg};
+          background: ${theme.colors.bg[0]};
           font-size: 16px;
-          color: ${theme.colors.text};
+          color: ${theme.colors.text[3]};
         }
         h1,
         h2,
@@ -32,7 +32,7 @@ export const GlobalStyles = () => {
         h6 {
           font-weight: 300;
           margin: ${theme.spacings.large} 0;
-          color: ${theme.colors.primary};
+          color: ${theme.colors.primary[3]};
         }
       `}
     />

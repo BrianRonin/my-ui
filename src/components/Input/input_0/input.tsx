@@ -26,7 +26,6 @@ export const Input = ({
   value = '',
   icon = false,
   as = 'input',
-  reference = null,
 }: inputProps) => {
   const [hasValue, setHasValue] = useState(false)
   const [inputValue, setInputValue] = useState('')

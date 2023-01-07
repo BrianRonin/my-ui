@@ -39,7 +39,7 @@ export const Input = styled.input`
     }
     &:checked + ${Slider}:before {
       transform: translateX(1.9rem);
-      background: ${theme.colors.primary};
+      background: ${theme.colors.primary[3]};
     }
   `}
 `
@@ -55,7 +55,7 @@ export const Slider = styled.span`
     background: ${theme.colors.mediumGray};
     transition: all 300ms ease-in-out;
     border-radius: 2rem;
-    box-shadow: 0 0 2px ${theme.colors.primary};
+    box-shadow: 0 0 2px ${theme.colors.primary[3]};
     &:before {
       content: '';
       position: absolute;

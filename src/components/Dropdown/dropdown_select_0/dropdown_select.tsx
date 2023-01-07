@@ -219,7 +219,7 @@ export const DropdownSelect = ({
               <AiFillCaretDown
                 color={
                   showMenu
-                    ? Theme.colors.primary
+                    ? theme.colors.primary[3]
                     : 'white'
                 }
               />

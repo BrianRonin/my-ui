@@ -7,25 +7,23 @@ const onInputError = (
   errorMessage: string,
 ) => css`
   border: ${theme.spacings.xxtiny} solid
-    ${theme.colors.warning};
+    ${theme.colors.warning[5]};
   box-shadow: 0 0 ${theme.spacings.xtiny} 0
-    ${theme.colors.warning};
-
+    ${theme.colors.warning[5]};
   &:focus {
     border: ${theme.spacings.xxtiny} solid
-      ${theme.colors.warning};
+      ${theme.colors.warning[3]};
     box-shadow: 0 0 ${theme.spacings.xtiny} 0
-      ${theme.colors.warning};
+      ${theme.colors.warning[3]};
   }
-
   ${!!errorMessage &&
   css`
     &:focus
       + ${Label},
       &:not(:placeholder-shown)
       + ${Label} {
-      color: ${theme.colors.white};
-      background: ${theme.colors.warning};
+      color: ${theme.colors.warning[0]};
+      background: ${theme.colors.warning[4]};
     }
   `}
 `
@@ -44,7 +42,6 @@ export const inputContainer = styled.div<{
   ${({ theme, errorMesage, hasIcon }) => css`
     position: relative;
     display: flex;
-
     > svg {
       pointer-events: none;
       position: absolute;
@@ -53,22 +50,22 @@ export const inputContainer = styled.div<{
       right: 13px;
       width: 2.5rem;
       height: 2.5rem;
-      color: ${theme.colors.gray6};
+      color: ${theme.colors.text[2]};
       z-index: ${theme.layers.layer1};
       ${!!errorMesage &&
       css`
-        color: ${theme.colors.warning};
+        color: ${theme.colors.warning[3]};
       `}
     }
 
     *:focus ~ svg {
-      color: ${theme.colors.primary};
+      color: ${theme.colors.primary[4]};
       ${!!errorMesage && css`
-        color: ${theme.colors.warning};
+        color: ${theme.colors.warning[4]};
       `}
     }
     *:disabled ~ svg {
-      color: ${theme.colors.gray3};
+      color: ${theme.colors.white[4]};
     }
 
     ${!hasIcon && css`
@@ -77,7 +74,7 @@ export const inputContainer = styled.div<{
         &:hover {
           z-index: ${theme.layers.layer2};
           cursor: pointer;
-          color: ${theme.colors.warning};
+          color: ${theme.colors.warning[5]};
         }
       }
     `}
@@ -91,15 +88,15 @@ type StyledInputType = Pick<
 
 export const Input = styled.input<StyledInputType>`
   ${({ theme, errorMessage, as }) => css`
-    border: 1px solid ${theme.colors.gray3};
+    border: 1px solid ${theme.colors.black[10]};
     width: 100%;
     font-size: ${theme.fonts.sizes.normal};
     padding: ${theme.spacings.small} ${theme.spacings.xsmall};
-    background: ${theme.colors.white};
+    background: ${theme.colors.bg[1]};
     padding-right: 4rem;
     border-radius: ${theme.spacings.tiny};
     outline: none;
-
+    color: ${theme.colors.text[4]};
     &::placeholder {
       visibility: hidden;
       opacity: 0;
@@ -107,10 +104,9 @@ export const Input = styled.input<StyledInputType>`
 
     &:focus {
       border: ${theme.spacings.xxtiny} solid
-        ${theme.colors.primary};
+        ${theme.colors.primary[3]};
       box-shadow: 0 0 ${theme.spacings.xtiny} 0
-        ${theme.colors.primary};
-      background: ${theme.colors.white};
+        ${theme.colors.primary[4]};
     }
 
     &:focus
@@ -122,23 +118,13 @@ export const Input = styled.input<StyledInputType>`
       top: 0;
       transform: translate(0, -50%);
       font-size: ${theme.fonts.sizes.xsmall};
-      color: ${theme.colors.white};
-      background: ${theme.colors.primary};
+      color: ${theme.colors.info[4]};
+      background: ${theme.colors.info[0]};
       filter: none;
-
       ${as === 'textarea' &&
       css`
         transform: translate(0, -50%);
       `}
-    }
-
-    &:disabled {
-      background: ${theme.colors.gray1};
-      color: ${theme.colors.gray5};
-    }
-    &:disabled + ${Label} {
-      background: ${theme.colors.gray5};
-      color: ${theme.colors.gray2};
     }
 
     ${as === 'textarea' &&
@@ -164,14 +150,14 @@ export const Label = styled.label<{
     font-size: ${theme.fonts.sizes.small};
     height: ${theme.fonts.sizes.small};
     transition: ${theme.transitions.fast};
-    background: ${theme.colors.white};
+    background: ${theme.colors.white[2]};
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     line-height: 1;
     pointer-events: none;
     z-index: ${theme.layers.layer1};
-    color: ${theme.colors.gray6};
+    color: ${theme.colors.text[3]};
     border-radius: ${theme.spacings.tiny};
     ${element === 'textarea' &&
     css`
@@ -182,7 +168,7 @@ export const Label = styled.label<{
 `
 export const ErrorMessage = styled.p`
   ${({ theme }) => css`
-    color: ${theme.colors.warning};
+    color: ${theme.colors.warning[5]};
     margin: ${theme.spacings.xxsmall} 0
       ${theme.spacings.large};
   `}
