@@ -226,11 +226,10 @@ export const makeHsl = (
 }
 console.log(
   makeHsl({
-    color: 'hsl(192, 29%, 93%)',
+    color: 'hsl(0, 0%, 100%)',
     length: 5,
     position: 'start',
-    incMatrix: 3,
-    incLight: 30,
-    saturation: 5,
+    incLight: 20,
+    orderLight: false,
   }),
 )

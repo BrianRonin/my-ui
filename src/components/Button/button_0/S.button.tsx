@@ -3,10 +3,10 @@ import styled from '@emotion/styled'
 
 export const Main = styled.button`
   ${({ theme }) => css`
-    --bg: ${theme.colors.bg[2][2]};
+    --bg: ${theme.colors.primary[4]};
     background: var(--bg);
     border: none;
-    color: ${theme.colors.text[5]};
+    color: ${theme.colors.text[0]};
     font-size: ${theme.fonts.sizes.medium};
     padding: ${theme.spacings.xsmall}
       ${theme.spacings.medium};
@@ -27,15 +27,13 @@ export const Main = styled.button`
     }
 
     &:disabled {
-      background: ${theme.colors.bg[2][3]};
-      color: ${theme.colors.bg[2][5]};
+      background: ${theme.colors.bg[2]};
+      color: ${theme.colors.bg[2]};
       cursor: not-allowed;
-
       &:hover {
         filter: none;
       }
     }
-
     > svg {
       width: 2rem;
       height: 2rem;

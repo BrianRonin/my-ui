@@ -15,12 +15,14 @@ import {
 // * 5) matriz +6 quente, brilho -20%
 // ? isso que eu desenvolvi não é uma regra, é uma ideia
 
+// ! orderm brilho --> escuro
+
 export const cl_primary = {
   color: 'hsl(53, 35%, 50%)',
   length: 5,
   position: 'middle',
-  incMatrix: 10,
-  incLight: 22,
+  incMatrix: 3,
+  incLight: 10,
 } as hslProps
 
 export const cl_secondary = {
@@ -28,7 +30,7 @@ export const cl_secondary = {
   length: 5,
   position: 'middle',
   incMatrix: 10,
-  incLight: 14,
+  incLight: 15,
 } as hslProps
 
 export const cl_text = {
@@ -36,16 +38,15 @@ export const cl_text = {
   length: 5,
   position: 'start',
   incMatrix: 3,
-  incLight: 21,
+  incLight: 20,
   incSaturation: 5,
 } as hslProps
 
 export const cl_bg = {
-  color: '#ffffff',
+  color: 'hsl(0, 0%, 100%)',
   length: 5,
   position: 'start',
   incLight: 20,
-  orderLight: true,
 } as hslProps
 
 export const cl_warning = {

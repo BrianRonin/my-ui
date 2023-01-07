@@ -23,6 +23,7 @@ export const dark_theme = {
       ...cl_bg,
       color: 'hsl(0, 0%, 100%)',
       position: 'end',
+      orderLight: true,
     }),
     primary: makeHsl({
       ...cl_primary,
