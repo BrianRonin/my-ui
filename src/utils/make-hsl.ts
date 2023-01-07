@@ -1,3 +1,41 @@
+export type hslProps = {
+  length: number
+  color: [number, number, number, number] | string
+  position?: 'start' | 'middle' | 'end'
+  inverse?: boolean
+  orderMatrix?: boolean
+  orderSaturation?: boolean
+  orderLight?: boolean
+  orderAlpha?: boolean
+  incMatrix?: number
+  incSaturation?: number
+  incLight?: number
+  incAlpha?: number
+}
+
+const withLimit = (
+  value: number,
+  increment: number,
+  limit: number,
+  subtraction = false,
+) => {
+  let newLight
+  if (increment > 0) {
+    newLight = subtraction
+      ? value - increment
+      : value + increment
+  } else {
+    newLight = value
+  }
+  newLight = newLight > limit ? limit : newLight
+  newLight = newLight < 0 ? 0 : newLight
+  return String(
+    Number.isInteger(newLight)
+      ? newLight
+      : newLight.toFixed(2),
+  )
+}
+
 const getMatrix = (
   hot: boolean,
   increments: number,
@@ -17,155 +55,182 @@ const getMatrix = (
   return String(withLimit(value, 0, 360))
 }
 
-type Increments = {
-  matriz: number
-  saturation: number
-  light: number
-  alpha: number
-  mainColorPosition: 'start' | 'middle' | 'end'
-}
-
-const withLimit = (
-  value: number,
-  increment: number,
-  limit: number,
-  subtraction = false,
-) => {
-  let newLight = subtraction
-    ? value - increment
-    : value + increment
-  newLight = newLight > limit ? limit : newLight
-  newLight = newLight < 0 ? 0 : newLight
-  return String(
-    Number.isInteger(newLight)
-      ? newLight
-      : newLight.toFixed(2),
-  )
+const extractColorValues = (value: string) => {
+  const [_matrix, _saturation, _light, _alpha] =
+    value.split(',')
+  const filter = (value: string | undefined) =>
+    Number(
+      value ? value.replace(/[^\d.]/g, '') : '1',
+    )
+  return [
+    filter(_matrix),
+    filter(_saturation),
+    filter(_light),
+    filter(_alpha),
+  ]
 }
 
 export const makeHsl = (
-  length: number,
-  color: [number, number, number, number],
-  increments: Increments = {
-    matriz: 3,
-    saturation: 10,
-    light: 3,
-    alpha: 0.2,
-    mainColorPosition: 'middle',
-  },
-  order = {
-    matriz: false, // Light --> dark
-    saturation: false, // 100 --> 0
-    light: false, // 100 --> 0
-    alpha: false, // 1 --> 0
-  },
-) => {
-  const template = 'hsl($m, $s, $b, $a)'
+  settings: hslProps,
+): string[] => {
+  const template = 'hsl($m, $s, $l, $a)'
+  const makeHsl = (
+    matrix: string,
+    saturation: string,
+    light: string,
+    alpha: string,
+  ) =>
+    template
+      .replace('$m', matrix)
+      .replace('$s', saturation + '%')
+      .replace('$l', light + '%')
+      .replace('$a', alpha)
+  const {
+    color,
+    length,
+    position = 'middle',
+    inverse = false,
+    incMatrix = 0,
+    incSaturation = 0,
+    incLight = 0,
+    incAlpha = 0,
+    orderAlpha = false,
+    orderLight = false,
+    orderMatrix = false,
+    orderSaturation = false,
+  } = settings
 
-  const resolveColor = {
-    middle: (i: number, before: boolean) => {
-      const context = (e: boolean) =>
-        before ? !!e : !e
-      const matrix = Number(currentMatrix)
-      const light = Number(
-        currentLight.replace('%', ''),
+  const colorValues = Array.isArray(color)
+    ? color
+    : extractColorValues(color)
+
+  const textColor = Array.isArray(color)
+    ? makeHsl(
+        String(color[0]),
+        String(color[1]),
+        String(color[2]),
+        String(color[3] ?? '1'),
       )
-      const saturation = Number(
-        currentSaturation.replace('%', ''),
-      )
-      const alpha = Number(currentAlpha)
-      const newMatrix = getMatrix(
-        context(order.matriz),
-        increments.matriz,
-        matrix,
-      )
-      const newSaturation =
-        withLimit(
-          saturation,
-          increments.saturation,
-          100,
-          context(order.saturation),
-        ) + '%'
-      const newLigth =
-        withLimit(
-          light,
-          increments.light,
-          100,
-          context(order.light),
-        ) + '%'
-      const newAlpha = withLimit(
-        alpha,
-        increments.alpha,
-        1,
-        context(order.alpha),
-      )
-      currentMatrix = newMatrix
-      currentSaturation = newSaturation
-      currentLight = newLigth
-      currentAlpha = newAlpha
-      resolve[i] = [
-        newMatrix,
-        newSaturation,
-        newLigth,
-        newAlpha,
-      ]
-    },
-  }
+    : color
+
+  const resolve: any[] = []
+  let currentMatrix = String(colorValues[0])
+  let currentSaturation = String(colorValues[1])
+  let currentLight = String(colorValues[2])
+  let currentAlpha = String(colorValues[3])
 
   if (Number.isInteger(length / 2))
-    return console.log('O numero deve ser impar')
-  const resolve = []
-  const halfLength = Math.floor(length / 2)
-  console.log(halfLength)
-  resolve[halfLength] = color // Main Color
+    throw new Error(
+      'você deve enviar um numero impar em "length"',
+    )
 
-  let currentMatrix = String(color[0])
-  let currentSaturation = String(color[1])
-  let currentLight = String(color[2])
-  let currentAlpha = String(color[3])
+  const resolveColor = (
+    i: number,
+    before: boolean,
+  ) => {
+    const numberValues = () => {
+      const matrix = Number(currentMatrix)
+      const light = Number(currentLight)
+      const saturation = Number(currentSaturation)
+      const alpha = Number(currentAlpha)
+      return { matrix, light, saturation, alpha }
+    }
 
-  if (increments.mainColorPosition === 'middle') {
-    for (let i = halfLength - 1; i >= 0; i--) {
-      resolveColor.middle(i, true)
+    const { alpha, matrix, light, saturation } =
+      numberValues()
+
+    const context = (e: boolean) => {
+      const hanldeBefore = before ? e : !e
+      const handleInverse = inverse
+        ? !hanldeBefore
+        : hanldeBefore
+      return handleInverse
     }
-    for (
-      let i = halfLength - 1;
-      i <= halfLength * 2;
-      i++
-    ) {
-      resolveColor.middle(i, false)
-    }
+
+    const newMatrix = getMatrix(
+      context(orderMatrix),
+      incMatrix,
+      matrix,
+    )
+
+    const newSaturation = withLimit(
+      saturation,
+      incSaturation,
+      100,
+      context(orderSaturation),
+    )
+
+    const newLigth = withLimit(
+      light,
+      incLight,
+      100,
+      context(orderLight),
+    )
+
+    const newAlpha = withLimit(
+      alpha,
+      incAlpha,
+      1,
+      context(orderAlpha),
+    )
+
+    currentMatrix = newMatrix
+    currentSaturation = newSaturation
+    currentLight = newLigth
+    currentAlpha = newAlpha
+    resolve[i] = makeHsl(
+      newMatrix,
+      newSaturation,
+      newLigth,
+      newAlpha,
+    )
   }
-  console.log(resolve)
-  // const initial = () => {
-  //   let currentMatrix = color[0]
-  //   let i = 0
-  //   const resolve = []
-  //   while (i <= length) {
-  //     const newMatrix = getMatrix(
-  //       darkToLight,
-  //       increments.matriz,
-  //       currentMatrix,
-  //     )
-  //     currentMatrix = newMatrix
-  //     resolve.push(newMatrix)
-  //     i++
-  //   }
-  // }
-
-  // const _resolve = (hot: boolean) => {
-  //   let i = 0
-  //   const currentMatrix = color[0]
-  //   const resolve = []
-  //   while (i < halfLength) {
-  //     const output = []
-  //     currentMatrix
-  //     output.push()
-  //     output.push()
-  //     i++
-  //   }
-  // }
+  const halfLength = Math.floor(length / 2)
+  switch (position) {
+    case 'start':
+      resolve[0] = textColor
+      for (let i = 1; i < length; i++) {
+        resolveColor(i, false)
+      }
+      break
+    case 'middle':
+      resolve[halfLength] = textColor // Main Color
+      for (let i = halfLength - 1; i >= 0; i--) {
+        resolveColor(i, true)
+      }
+      currentMatrix = String(colorValues[0])
+      currentSaturation = String(colorValues[1])
+      currentLight = String(colorValues[2])
+      currentAlpha = String(colorValues[3])
+      for (
+        let i = halfLength + 1;
+        i <= halfLength * 2;
+        i++
+      ) {
+        resolveColor(i, false)
+      }
+      break
+    case 'end':
+      resolve[length] = textColor
+      for (let i = length - 1; i >= 0; i--) {
+        resolveColor(i, true)
+      }
+      break
+    default:
+      console.log(
+        'você precisa escolher uma direção',
+      )
+      break
+  }
+  return resolve
 }
-
-console.log(makeHsl(9, [53, 35, 50, 0.5]))
-// console.log(Number('0.05'))
+console.log(
+  makeHsl({
+    color: 'hsl(192, 29%, 93%)',
+    length: 5,
+    position: 'start',
+    incMatrix: 3,
+    incLight: 30,
+    saturation: 5,
+  }),
+)
