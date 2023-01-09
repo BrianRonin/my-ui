@@ -1,5 +1,5 @@
 import * as S from './S.logo_link'
-import { Heading } from '../../../Text/heading_0'
+import { Heading } from '../../../Text/heading_0/heading'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
@@ -8,6 +8,7 @@ export type logoLinkProps = {
   srcImg?: string
   link: string
   newTab?: boolean
+  circle?: boolean
 }
 
 export const LogoLink = ({
@@ -15,6 +16,7 @@ export const LogoLink = ({
   srcImg = '',
   link = '',
   newTab = false,
+  circle = false,
 }: logoLinkProps) => {
   const isNextLink = link.match(/^\//)
     ? true
@@ -30,32 +32,16 @@ export const LogoLink = ({
         legacyBehavior
       >
         <S.Main href={'/'}>
-          <S.LogoContainer>
-            <motion.img
-              animate={{
-                rotate: 360,
-                scale: [1, 1.05, 1],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 12,
-                ease: 'linear',
-              }}
-              src={'/logo/only_cubo.svg'}
-              style={{
-                position: 'absolute',
-                width: '9rem',
-                bottom: '70px',
-                left: '30px',
-              }}
-            ></motion.img>
-            <S.Logo
-              src={
-                '/logo/all_logo_whiout_cubo.svg'
-              }
-              alt={text}
-            />
-          </S.LogoContainer>
+          {srcImg ? (
+            <S.LogoContainer>
+              <S.Logo
+                circle={circle}
+                src={srcImg}
+              ></S.Logo>
+            </S.LogoContainer>
+          ) : (
+            text
+          )}
         </S.Main>
       </Link>
     </Heading>

@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 export const Main = styled.a`
@@ -32,6 +33,15 @@ export const Logo_cubo = styled.img`
   width: 10rem;
   /* animation: rotating 85s linear infinite;a */
 `
-export const Logo = styled.img`
-  width: 15rem;
+export const Logo = styled.img<{circle: boolean}>`
+  ${({circle, theme}) => css`
+    width: 15rem;
+    position: 'absolute';
+    width: '9rem';
+    bottom: '70px';
+    left: '30px';
+    ${circle && css`
+      border-radius: 50%;
+    `}
+  `}
 `

@@ -23,7 +23,7 @@ export const Sidebar = ({
 }: sidebarProps) => {
   const [sideBarVisible, setSideBarVisible] =
     useState(false)
-  const thema = useTheme()
+  const theme = useTheme()
   function handleButtonOpenCloseSidebar(
     e: MouseEvent,
   ) {
@@ -49,30 +49,30 @@ export const Sidebar = ({
           aria-label='Open or close sidebar'
           title='Open or close sidebar'
           onClick={handleButtonOpenCloseSidebar}
-          theme={thema}
+          theme={theme}
         >
           {sideBarVisible && <VscChromeClose />}
-          {!sideBarVisible && <VscMenu />}
+          {!sideBarVisible && (
+            <VscMenu color={theme.colors.bg[4]} />
+          )}
         </S.OpenCloseSidebar>
         <S.Main
           aria-hidden={!sideBarVisible}
           sidebarVisible={sideBarVisible}
-          theme={thema}
+          theme={theme}
         >
           <S.Nav>
             <S.Logo>
               <LogoLink
                 link='/'
                 text={title}
+                circle
                 srcImg={srcLogo}
               />
             </S.Logo>
             {links.map((link, i) => (
               <NavLink
-                key={
-                  'key-react-sidebar-' +
-                  i
-                }
+                key={'key-react-sidebar-' + i}
                 link={link.link}
                 newTab={link.newTab}
                 text={link.text}

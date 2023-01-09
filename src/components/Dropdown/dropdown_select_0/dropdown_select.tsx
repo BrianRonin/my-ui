@@ -7,16 +7,7 @@ import {
 import { AiFillCaretDown } from 'react-icons/ai'
 import * as S from './S.dropdown_select'
 import { useTheme } from '@emotion/react'
-import { inject_styles } from '../../../types/emotion'
-
-export type dropdownSelectStyles = {
-  Main_Menu?: inject_styles
-  Main?: inject_styles
-  InputContainer?: inject_styles
-  SearchContainer?: inject_styles
-  Menu?: inject_styles
-  Option?: inject_styles
-}
+import { AiOutlineClose } from 'react-icons/ai'
 
 export type dropdownSelectProps = {
   placeHolder?: string
@@ -27,19 +18,10 @@ export type dropdownSelectProps = {
   isSearchable?: boolean
   isCreable?: boolean
   onChange?: <i>(choice: i | i[]) => any
-  styles?: dropdownSelectStyles
 }
 
 const CloseIcon = () => {
-  return (
-    <svg
-      height='20'
-      width='20'
-      viewBox='0 0 20 20'
-    >
-      <path d='M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l -2,651-3,030-2,651 3,029c-0,469 0,469-1,229 0,469-1,697 0-0,469-0,469-0,469-1,229 0-1,697l2,758-3,15-2,759-3,152c-0,469-0,469-0,469 .228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z'></path>
-    </svg>
-  )
+  return <AiOutlineClose />
 }
 
 export const DropdownSelect = ({
@@ -51,9 +33,8 @@ export const DropdownSelect = ({
   onChange = () => undefined,
   Id,
   Class,
-  styles,
 }: dropdownSelectProps) => {
-  const Theme = useTheme()
+  const theme = useTheme()
 
   const [showMenu, setShowMenu] = useState(false)
   const [selectedValue, setSelectedValue] =
@@ -202,13 +183,10 @@ export const DropdownSelect = ({
       id={Id}
       className={Class}
       showMenu={showMenu}
-      styles={styles?.Main}
-      _styles={styles?.Main_Menu}
     >
       <S.InputContainer
         ref={inputRef}
         onClick={() => setShowMenu(!showMenu)}
-        styles={styles?.InputContainer}
       >
         <S.SelectedValue>
           {getDisplay()}
@@ -219,8 +197,8 @@ export const DropdownSelect = ({
               <AiFillCaretDown
                 color={
                   showMenu
-                    ? theme.colors.primary[3]
-                    : 'white'
+                    ? theme.colors.primary[2]
+                    : theme.colors.black[5]
                 }
               />
             </S.IconContainer>
@@ -228,14 +206,9 @@ export const DropdownSelect = ({
         </S.Tools>
       </S.InputContainer>
       {showMenu && (
-        <S.Menu
-          styles={styles?.Menu}
-          _styles={styles?.Main_Menu}
-        >
+        <S.Menu>
           {isSearchable && (
-            <S.SearchContainer
-              styles={styles?.SearchContainer}
-            >
+            <S.SearchContainer>
               <input
                 onChange={onSearch}
                 value={searchValue}
@@ -245,7 +218,6 @@ export const DropdownSelect = ({
           )}
           {getOptions().map((option, index) => (
             <S.Option
-              styles={styles?.Option}
               key={'search_values' + index}
               onClick={() =>
                 handleOptionClick(option)

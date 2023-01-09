@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 export const Main = styled.button`
   ${({ theme }) => css`
-    --bg: ${theme.colors.primary[4]};
+    --bg: ${theme.colors.primary[3]};
     background: var(--bg);
     border: none;
     color: ${theme.colors.text[0]};

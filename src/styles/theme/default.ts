@@ -44,16 +44,16 @@ export const cl_text = {
 
 export const cl_bg = {
   color: 'hsl(0, 0%, 100%)',
-  length: 5,
+  length: 9,
   position: 'start',
-  incLight: 20,
+  incLight: 11,
 } as hslProps
 
 export const cl_warning = {
   color: 'hsl(41, 50%, 53%)',
   length: 5,
   position: 'middle',
-  incLight: 10,
+  incLight: 5,
   incSaturation: 15,
   incMatrix: 3,
 } as hslProps
@@ -101,6 +101,7 @@ export const DefaultTheme = {
     // 'hsl(33, 35%, 6%, 1)',
 
     primary: makeHsl(cl_primary),
+    _primary: makeHsl(cl_primary),
 
     // 'hsl(292, 30%, 72%, 1)',
     // 'hsl(294, 30%, 58%, 1)',
@@ -109,6 +110,7 @@ export const DefaultTheme = {
     // 'hsl(300, 30%, 16%, 1)'
 
     secondary: makeHsl(cl_secondary),
+    _secondary: makeHsl(cl_secondary),
 
     // 'hsl(52, 20%, 90%)',
     // 'hsl(49, 15%, 69%, 1)',
@@ -117,6 +119,7 @@ export const DefaultTheme = {
     // 'hsl(40, 0%, 6%, 1)'
 
     text: makeHsl(cl_text),
+    _text: makeHsl(cl_text),
 
     //   'hsl(0, 0%, 100%)',
     //   'hsl(0, 0%, 70%, 1)',
@@ -125,6 +128,7 @@ export const DefaultTheme = {
     //   'hsl(0, 0%, 0%, 1)'
 
     bg: makeHsl(cl_bg),
+    _bg: makeHsl(cl_bg),
 
     // 'hsl(47, 80%, 73%, 1)',
     // 'hsl(44, 65%, 63%, 1)',
@@ -133,6 +137,7 @@ export const DefaultTheme = {
     // 'hsl(35, 20%, 33%, 1)'
 
     warning: makeHsl(cl_warning),
+    _warning: makeHsl(cl_warning),
 
     // 'hsl(154, 81%, 80%, 1)',
     // 'hsl(151, 66%, 70%, 1)',
@@ -141,6 +146,7 @@ export const DefaultTheme = {
     // 'hsl(142, 21%, 40%, 1)'
 
     success: makeHsl(cl_success),
+    _success: makeHsl(cl_success),
 
     // 'hsl(280, 85%, 81%, 1)',
     // 'hsl(283, 70%, 71%, 1)',
@@ -149,9 +155,12 @@ export const DefaultTheme = {
     // 'hsl(292, 25%, 41%, 1)'
 
     info: makeHsl(cl_info),
+    _info: makeHsl(cl_info),
 
     black: makeHsl(cl_black),
+    _black: makeHsl(cl_black),
     white: makeHsl(cl_white),
+    _white: makeHsl(cl_white),
   },
   fonts: {
     family: {

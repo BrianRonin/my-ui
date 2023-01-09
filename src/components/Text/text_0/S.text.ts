@@ -4,6 +4,6 @@ import styled from '@emotion/styled'
 export const Main = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.sizes.medium};
-    color: ${theme.colors.text};
+    color: ${theme.colors.text[4]};
   `}
 `

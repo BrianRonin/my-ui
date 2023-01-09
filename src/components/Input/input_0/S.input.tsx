@@ -6,26 +6,21 @@ const onInputError = (
   theme: Theme,
   errorMessage: string,
 ) => css`
-  border: ${theme.spacings.xxtiny} solid
-    ${theme.colors.warning[5]};
-  box-shadow: 0 0 ${theme.spacings.xtiny} 0
-    ${theme.colors.warning[5]};
+  border: ${theme.spacings.xxtiny} solid ${theme.colors.warning[0]};
   &:focus {
-    border: ${theme.spacings.xxtiny} solid
-      ${theme.colors.warning[3]};
-    box-shadow: 0 0 ${theme.spacings.xtiny} 0
-      ${theme.colors.warning[3]};
+    border: ${theme.spacings.xxtiny} solid ${theme.colors.warning[0]};
+    box-shadow: 0 0 ${theme.spacings.xxsmall} ${theme.colors.warning[2]};
   }
-  ${!!errorMessage &&
+  /* ${!!errorMessage &&
   css`
     &:focus
       + ${Label},
       &:not(:placeholder-shown)
       + ${Label} {
-      color: ${theme.colors.warning[0]};
+      color: ${theme.colors._warning[3]};
       background: ${theme.colors.warning[4]};
     }
-  `}
+  `} */
 `
 
 export const Main = styled.div`
@@ -50,7 +45,7 @@ export const inputContainer = styled.div<{
       right: 13px;
       width: 2.5rem;
       height: 2.5rem;
-      color: ${theme.colors.info[3]};
+      color: ${theme.colors._primary[2]};
       z-index: ${theme.layers.layer1};
       ${!!errorMesage &&
       css`
@@ -61,7 +56,7 @@ export const inputContainer = styled.div<{
     *:focus ~ svg {
       color: ${theme.colors.primary[3]};
       ${!!errorMesage && css`
-        color: ${theme.colors.warning[4]};
+        color: ${theme.colors.warning[2]};
       `}
     }
     *:disabled ~ svg {
@@ -101,14 +96,12 @@ export const Input = styled.input<StyledInputType>`
       visibility: hidden;
       opacity: 0;
     }
-
     &:focus {
       border: ${theme.spacings.xxtiny} solid
         ${theme.colors.primary[3]};
-      box-shadow: 0 0 ${theme.spacings.xtiny} 0
-        ${theme.colors.primary[4]};
+      box-shadow: 0px 0px ${theme.sizes.small}
+        ${theme.colors.primary[0]};
     }
-
     &:focus
       + ${Label},
       &:not(:placeholder-shown)
@@ -118,8 +111,8 @@ export const Input = styled.input<StyledInputType>`
       top: 0;
       transform: translate(0, -50%);
       font-size: ${theme.fonts.sizes.xsmall};
-      color: ${theme.colors.info[4]};
-      background: ${theme.colors.primary[0]};
+      color: ${theme.colors._text[4]};
+      background: ${theme.colors._primary[0]};
       filter: none;
       ${as === 'textarea' &&
       css`
@@ -167,7 +160,7 @@ export const Label = styled.label<{
 `
 export const ErrorMessage = styled.p`
   ${({ theme }) => css`
-    color: ${theme.colors.warning[5]};
+    color: ${theme.colors.warning[3]};
     margin: ${theme.spacings.xxsmall} 0
       ${theme.spacings.large};
   `}

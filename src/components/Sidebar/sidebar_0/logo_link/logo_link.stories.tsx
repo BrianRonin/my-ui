@@ -46,4 +46,5 @@ export const Image: Story<logoLinkProps> = (
 Image.args = {
   text: 'logo',
   link: 'www.google.com',
+  srcImg: '/avatar.jpg',
 }

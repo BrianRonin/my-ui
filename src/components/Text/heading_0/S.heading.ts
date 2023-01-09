@@ -1,6 +1,8 @@
 import { css, Theme } from '@emotion/react'
 import styled from '@emotion/styled'
-import { HeadingProps } from '.'
+import { HeadingProps } from './heading'
+
+type props = Omit<HeadingProps, 'children'>
 
 const titleSize = {
   small: (theme: Theme) => css`
@@ -11,7 +13,7 @@ const titleSize = {
   `,
   big: (theme: Theme) => css`
     font-size: ${theme.sizes.xlarge};
-    @media ${theme.media.medium} {
+    @media ${theme.media.lMedium} {
       font-size: ${theme.sizes.large};
     }
   `,
@@ -22,31 +24,21 @@ const titleSize = {
 }
 
 const mediaFont = (theme: Theme) => css`
-  @media ${theme.media.medium} {
+  @media ${theme.media.lMedium} {
     font-size: ${theme.sizes.xlarge};
   }
 `
 
-export const Title = styled.h1<
-  Pick<
-    HeadingProps,
-    'light' | 'size' | 'uppercase' | 'styles'
-  >
->`
+export const Title = styled.h1<props>`
   ${({
     theme,
-    light,
     size,
     uppercase,
-    styles,
   }) => css`
-    color: ${light
-      ? theme.colors.white
-      : theme.colors.primary[3]};
+    color: ${theme.colors.text[4]};
     text-transform: ${uppercase
       ? 'uppercase'
       : 'none'};
     ${!!size && titleSize[size](theme)};
-    ${styles && styles(theme)}
   `}
 `

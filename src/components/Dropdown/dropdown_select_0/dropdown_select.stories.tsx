@@ -12,6 +12,11 @@ export default {
   title: 'components/Dropdown/Dropdown_select_0',
   component: DropdownSelect,
   args: mock_dropdownSelect,
+  parameters: {
+    backgrounds: {
+      default: 'light',
+    },
+  },
 } as Meta
 
 export const Template: Story<dropdownSelectProps> =
@@ -21,8 +26,15 @@ export const Template: Story<dropdownSelectProps> =
     </div>
   )
 
-Template.parameters = {
-  backgrounds: {
-    default: 'light',
-  },
-}
+export const Tags: Story<dropdownSelectProps> = (
+  args,
+) => (
+  <div style={{ maxWidth: '20rem' }}>
+    <DropdownSelect
+      {...args}
+      isMulti
+      isSearchable
+      isCreable
+    />
+  </div>
+)

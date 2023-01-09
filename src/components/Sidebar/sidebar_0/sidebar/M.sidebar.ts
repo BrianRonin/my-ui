@@ -1,7 +1,8 @@
+import { sidebarProps } from './sidebar'
+
 export const mock_sidebar = {
   links: [
     {
-      id: 'link-1',
       link: '/home/1',
       newTab: false,
       text: 'Sobre mim',
@@ -38,5 +39,5 @@ export const mock_sidebar = {
     },
   ],
   title: 'Brian',
-  srcLogo: '/logo/only_cubo.svg',
-}
+  srcLogo: '/avatar.jpg',
+} as sidebarProps

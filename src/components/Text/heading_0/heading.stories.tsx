@@ -2,7 +2,7 @@ import {
   Meta,
   Story,
 } from '@storybook/react/types-6-0'
-import { Heading, HeadingProps } from '.'
+import { Heading, HeadingProps } from './heading'
 
 export default {
   title: 'components/Text/Heading_0',

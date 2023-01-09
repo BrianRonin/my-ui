@@ -6,16 +6,12 @@ type typeSidebarBehavior = {
   theme: Theme
 }
 
-const Default = (theme: Theme) => css``
-
 const buttonSidebarBehavior = ({
   sidebarVisible,
   theme,
 }: typeSidebarBehavior) => css`
   left: ${sidebarVisible ? '26rem' : '1rem'};
-  color: ${sidebarVisible
-    ? theme.colors.secondary
-    : theme.colors.white};
+  color: ${sidebarVisible ? 'red' : 'yellow'};
 
   @media ${theme.media.lMedium} {
     left: ${sidebarVisible ? '26rem' : '-0.5rem'};
@@ -38,9 +34,8 @@ const sidebarBehavior = ({
 
 export const Main = styled.div<typeSidebarBehavior>`
   ${({ theme, sidebarVisible }) => css`
-    ${Default(theme)}
     z-index: 3;
-    background: ${theme.colors.darkBg};
+    background: ${theme.colors.bg[1]};
     padding: ${theme.spacings.large};
     display: flex;
     position: fixed;
@@ -75,28 +70,21 @@ export const Logo = styled.div`
     }
   `}
 `
-export const bg_white = styled.div`
-  ${({ theme }) => css`
-    border-radius: 50%;
-    width: 6rem;
-    background: white;
-    scale: 200%;
-    margin: 0 auto;
-  `}
-`
 
 export const OpenCloseSidebar = styled.a<typeSidebarBehavior>`
   ${({ theme, sidebarVisible }) => css`
-    ${Default(theme)}
     z-index: 4;
     position: fixed;
     top: ${theme.spacings.medium};
-    color: ${theme.colors.white};
-    background-color: ${theme.colors.darkBg};
+    background-color: ${theme.colors.bg[1]};
     height: 3rem;
     width: 3rem;
     left: 26rem;
     transition: all 300ms ease-in-out;
+
+    svg {
+      color: ${theme.colors.primary[2]} !important;
+    }
 
     ${buttonSidebarBehavior({
       theme,

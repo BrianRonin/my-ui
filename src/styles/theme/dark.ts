@@ -40,7 +40,7 @@ export const dark_theme = {
     }),
     warning: makeHsl({
       ...cl_warning,
-      inverse: false,
+      inverse: true,
     }),
     info: makeHsl({ ...cl_info, inverse: true }),
     success: makeHsl({

@@ -9,11 +9,9 @@ export const Main = styled.a`
     margin-bottom: ${theme.spacings.small};
     font-size: 1.8rem;
     border-right: 0.5rem solid ${theme.colors.bg[2]};
-
     &:hover {
-      color: ${theme.colors.secondary};
-      border-right-color: ${theme.colors
-        .secondary};
+      color: ${theme.colors._secondary[0]};
+      border-right-color: ${theme.colors._secondary[0]};
     }
   `}
 `

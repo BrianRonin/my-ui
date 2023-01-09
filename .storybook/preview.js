@@ -11,6 +11,7 @@ import { GlobalStyles } from '../src/styles/globals'
 //   background-color: red !important;
 //   color: red !important;
 // `
+
 const ProviderTheme = ({ theme, children }) => {
   return (
     <ThemeProvider theme={theme}>

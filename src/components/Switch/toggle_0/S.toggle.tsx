@@ -20,7 +20,6 @@ export const Label = styled.label`
     line-height: 0;
     font-size: 0;
     overflow: hidden;
-    color: rgba(0, 0, 0, 0);
   `}
 `
 
@@ -30,16 +29,8 @@ export const Input = styled.input`
     opacity: 0;
     width: 0;
     height: 0;
-    &:checked + ${Slider} {
-      background: ${theme.colors.secondary};
-    }
-    &:focus + ${Slider} {
-      box-shadow: 0 1 2px
-        ${theme.colors.secondary};
-    }
     &:checked + ${Slider}:before {
       transform: translateX(1.9rem);
-      background: ${theme.colors.primary[3]};
     }
   `}
 `
@@ -52,10 +43,9 @@ export const Slider = styled.span`
     left: 0;
     right: 0;
     bottom: 0;
-    background: ${theme.colors.mediumGray};
+    background: ${theme.colors.bg[5]};
     transition: all 300ms ease-in-out;
     border-radius: 2rem;
-    box-shadow: 0 0 2px ${theme.colors.primary[3]};
     &:before {
       content: '';
       position: absolute;
@@ -63,7 +53,7 @@ export const Slider = styled.span`
       width: 2.1rem;
       left: 0.4rem;
       bottom: 0.2rem;
-      background: ${theme.colors.text};
+      background: ${theme.colors.text[0]};
       border-radius: 50%;
       transition: all 300ms ease-in-out;
     }

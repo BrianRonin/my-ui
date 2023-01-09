@@ -11,6 +11,7 @@ export type ratingIconProps = {
   max: number
   value: number
   gradient?: Partial<gradientIconProps>
+  id?: string
   className?: string
 }
 
@@ -25,6 +26,7 @@ export const RatingIcon = ({
   gradient,
   value,
   className,
+  id,
 }: ratingIconProps) => {
   const Icons: IconsSetting[] = []
   const calc = value / 2
@@ -61,14 +63,16 @@ export const RatingIcon = ({
       x2: '50%',
     },
   }
+  const hasId = id ? { id } : {}
   return (
     <>
       <GradientIcon
-        {...(gradient
+        {...(gradient || id
           ? {
-              id: 'gradientIconRating',
               ...DefaultGradientProps,
               ...gradient,
+              ...hasId,
+              id: 'gradientIconRating',
             }
           : {
               ...DefaultGradientProps,
@@ -85,8 +89,8 @@ export const RatingIcon = ({
               !isInteger && Icon.isLast
                 ? {
                     fill: `url(#${
-                      gradient
-                        ? gradient.id
+                      id
+                        ? id
                         : 'gradientIconRating'
                     })`,
                   }
