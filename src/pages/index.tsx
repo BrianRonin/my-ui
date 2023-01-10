@@ -1,9 +1,11 @@
 import { AiOutlineMail } from 'react-icons/ai'
 import { Input } from '../components/Input/input_0'
-import { S_Container } from '../components/Only_Styles/Containers/container_0/S.container'
 import { mock_sidebar } from '../components/Sidebar/sidebar_0/sidebar/mock'
 import { Sidebar } from '../components/Sidebar/sidebar_0/sidebar'
 import { Base } from '../templates/Base'
+import { S_Container } from '../components/Container/container_0/styles'
+import { Container } from '../components/Container/container_1'
+import { Comment } from '../components/Comment/comment_0'
 
 export default function Home() {
   return (
@@ -18,7 +20,7 @@ export default function Home() {
           marginTop: '10rem',
         }}
       >
-        <S_Container>
+        <Container>
           <Input
             errorMessage='Something went wrong, Sorry!'
             value='Something you typed'
@@ -37,7 +39,52 @@ export default function Home() {
             label='ok'
             name='um nome'
           ></Input>
-        </S_Container>
+        </Container>
+        <Comment
+          comment='ok'
+          createdAt='10/10/2010'
+          user={{ firstName: 'brian' }}
+        ></Comment>
+        <Comment
+          comment='ok'
+          createdAt='10/10/2010'
+          user={{ firstName: 'brian' }}
+        ></Comment>
+        <Comment
+          comment='A expressão Lorem ipsum em design gráfico e editoração é um texto padrão em'
+          createdAt='10/10/2010'
+          user={{ firstName: 'brian' }}
+        ></Comment>
+        <Comment
+          comment='A expressão Lorem ipsum em design gráfico e editoração é um texto padrão em'
+          createdAt='10/10/2010'
+          user={{ firstName: 'brian' }}
+        ></Comment>
+        <Comment
+          comment='A expressão Lorem ipsum em design gráfico e editoração é um texto padrão em'
+          createdAt='10/10/2010'
+          user={{ firstName: 'brian' }}
+        ></Comment>
+        <Comment
+          comment='A expressão Lorem ipsum em design gráfico e editoração é um texto padrão em'
+          createdAt='10/10/2010'
+          user={{ firstName: 'brian' }}
+        ></Comment>
+        <Comment
+          comment='ok'
+          createdAt='10/10/2010'
+          user={{ firstName: 'brian' }}
+        ></Comment>
+        <Comment
+          comment='ok'
+          createdAt='10/10/2010'
+          user={{ firstName: 'brian' }}
+        ></Comment>
+        <Comment
+          comment='ok'
+          createdAt='10/10/2010'
+          user={{ firstName: 'brian' }}
+        ></Comment>
       </div>
     </Base>
   )

@@ -6,7 +6,7 @@ import { Container, containerProps } from '.'
 import { mock_container } from './mock'
 
 export default {
-  title: 'components/container/container 0',
+  title: 'components/Container/container 1',
   component: Container,
   args: mock_container,
 } as Meta

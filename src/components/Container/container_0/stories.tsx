@@ -7,8 +7,7 @@ import {
 import { S_Container } from './styles'
 
 export default {
-  title:
-    'components/Only_styles/Containers/Container_0',
+  title: 'components/Container/Container 0',
 } as Meta
 
 const _S_Container = styled.div`

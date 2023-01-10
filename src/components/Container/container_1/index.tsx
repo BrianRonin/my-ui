@@ -8,5 +8,9 @@ export type containerProps = {
 export const Container = ({
   children,
 }: containerProps) => {
-  return <S.Main>{children}</S.Main>
+  return (
+    <S.Main>
+      <S.Inside>{children}</S.Inside>
+    </S.Main>
+  )
 }

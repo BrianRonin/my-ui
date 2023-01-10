@@ -184,6 +184,19 @@ export const DefaultTheme = {
       xhero: '8.8rem',
       xxhero: '9.6rem',
     },
+    lineHeight: {
+      tiny: '1',
+      small: '1.2',
+      medium: '1.5',
+      large: '1.8',
+    },
+    weight: {
+      light: '300',
+      regular: '400',
+      semiBold: '600',
+      bold: '700',
+      extraBold: '800',
+    },
   },
   sizes: {
     xsmall: '8rem',
@@ -207,6 +220,7 @@ export const DefaultTheme = {
     gMedium: '(min-width: 768px)',
     gLarge: '(min-width: 992px)',
   },
+
   spacings: {
     xxtiny: '0.1rem',
     xtiny: '0.2rem',
@@ -247,6 +261,16 @@ export const DefaultTheme = {
     slow: 'all 600ms ease-in-out',
     slower: 'all 800ms ease-in-out',
     slowest: 'all 1s ease-in-out',
+  },
+  radius: {
+    none: 0,
+    tiny: '0.2rem',
+    small: '0.4rem',
+    medium: '0.8rem',
+    large: '1rem',
+    xlarge: '10rem',
+    xxlarge: '100rem',
+    circle: '10%',
   },
   layers: {
     normal: 0,
