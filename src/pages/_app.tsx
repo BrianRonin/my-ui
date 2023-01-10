@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import { GlobalStyles } from '../styles/globals'
 import { Roboto } from '@next/font/google'
-import { Theme } from '../contexts/theme/theme'
+import { Theme } from '../contexts/theme'
 const myFont = Roboto({
   style: ['normal', 'italic'],
   weight: ['100', '300', '500', '900'],

@@ -1,9 +1,9 @@
 import { AiOutlineMail } from 'react-icons/ai'
-import { Input } from '../components/Input/input_0/input'
+import { Input } from '../components/Input/input_0'
 import { S_Container } from '../components/Only_Styles/Containers/container_0/S.container'
-import { mock_sidebar } from '../components/Sidebar/sidebar_0/sidebar/M.sidebar'
-import { Sidebar } from '../components/Sidebar/sidebar_0/sidebar/sidebar'
-import { Base } from '../templates/Base/Base'
+import { mock_sidebar } from '../components/Sidebar/sidebar_0/sidebar/mock'
+import { Sidebar } from '../components/Sidebar/sidebar_0/sidebar'
+import { Base } from '../templates/Base'
 
 export default function Home() {
   return (

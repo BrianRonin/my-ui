@@ -15,6 +15,27 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["./src/**/*.tsx", "./src/**/*.ts"],
+  "include": [
+    "./src/**/*.tsx",
+    "./src/**/*.ts",
+    "src/components/Text/text_0/test.js",
+    "src/components/Text/text_0/.stories.tsx",
+    "src/components/Text/heading_0/.stories.tsx",
+    "src/components/Switch/toggle_0/.stories.tsx",
+    "src/components/Switch/switch_button_0/.stories.tsx",
+    "src/components/Sidebar/sidebar_0/sidebar/.stories.tsx",
+    "src/components/Sidebar/sidebar_0/nav_link/.stories.tsx",
+    "src/components/Sidebar/sidebar_0/logo_link/.stories.tsx",
+    "src/components/OnlyStyles/Containers/container_0/.stories.tsx",
+    "src/components/Input/input_0/.stories..tsx",
+    "src/components/Icon/rating_icon_0/.stories.tsx",
+    "src/components/Icon/gradient_icon_0/.stories.tsx",
+    "src/components/Form/form_post_0/.stories.tsx",
+    "src/components/Button/round_button_0/.stories.tsx",
+    "src/components/Button/button_with_icon_0/.stories.tsx",
+    "src/components/Button/button_0/.stories.tsx",
+    "src/components/Container/container_1/.stories.tsx",
+    "src/components/Form/form_login_0/.stories.tsx"
+  ],
   "exclude": ["node_modules"]
 }
