@@ -1,43 +1,58 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import { buttonCustom } from '.'
+import { dynamicButton } from '../../../styles/css/dynamic-button'
 
-export const Main = styled.button`
-  ${({ theme }) => css`
-    --bg: ${theme.colors.primary[3]};
+type mainProps = {
+  onlyIcon: boolean
+  custom: buttonCustom
+  outline: boolean
+  iconDirection: 'left' | 'right'
+}
+
+export const Main = styled.button<mainProps>`
+  ${({ theme, onlyIcon, custom, outline, iconDirection }) => css`
+    --bg: ${custom.enabled.bg};
+    --color: ${custom.enabled.color};
+    --ds-color: ${custom.disabled.color};
+    --ds-bg: ${custom.disabled.bg};
+
     background: var(--bg);
     border: none;
-    color: ${theme.colors.text[0]};
+    color: var(--color);
     font-size: ${theme.fonts.sizes.medium};
-    padding: ${theme.spacings.xsmall}
-      ${theme.spacings.medium};
+    padding: ${theme.spacings.xsmall} ${theme.spacings.medium};
     cursor: pointer;
     border-radius: ${theme.spacings.tiny};
-    transition: ${theme.transitions.fast};
+    transition: transform ${theme.transitions[0]} ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 ${theme.spacings.tiny}
-        var(--bg);
-      filter: brightness(110%);
-    }
-    &:hover {
-      filter: brightness(90%);
-    }
-
-    &:disabled {
-      background: ${theme.colors.bg[2]};
-      color: ${theme.colors.bg[2]};
-      cursor: not-allowed;
-      &:hover {
-        filter: none;
-      }
-    }
+    ${theme.name === 'default' && css`
+      box-shadow: 0px 0px 20px ${theme.colors.white[8]};
+    `}
     > svg {
       width: 2rem;
       height: 2rem;
-      margin-left: 1rem;
+      ${iconDirection === 'left'
+       ? css` margin-right: 1rem;`
+       : css` margin-left: 1rem;`
+      }
     }
+
+    ${dynamicButton()}
+
+    ${!!onlyIcon && css`
+      padding: ${theme.spacings.xsmall} ${theme.spacings.xsmall};
+      border-radius: 50%;
+      > svg {
+        margin-left: 0;
+      }
+    `}
+    ${outline && css`
+      border: 2px solid var(--bg);
+      color: var(--bg);
+      background: none;
+    `}
   `}
 `

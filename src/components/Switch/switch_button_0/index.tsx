@@ -3,7 +3,7 @@ import { inject_styles } from '../../../types/emotion'
 import {
   buttonWithIconProps,
   buttonWithIconStyles,
-} from '../../Button/button_with_icon_0'
+} from '../../Button/button_1'
 import { roundButtonProps } from '../../Button/round_button_0'
 import * as S from './styles'
 

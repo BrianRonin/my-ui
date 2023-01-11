@@ -1,5 +1,5 @@
 import { css, Theme } from '@emotion/react'
-import { ButtonWithIcon } from '../../Button/button_with_icon_0'
+import { ButtonWithIcon } from '../../Button/button_1'
 import { switchButtonProps } from '.'
 import { GoAlert } from 'react-icons/go'
 

@@ -6,6 +6,7 @@ import {
   DropdownSelect,
   dropdownSelectProps,
 } from '.'
+import { S_Container } from '../../Container/container_0/styles'
 import { mock_dropdownSelect } from './mock'
 
 export default {
@@ -17,24 +18,34 @@ export default {
       default: 'light',
     },
   },
+  decorators: [
+    (Story) => (
+      <S_Container>
+        <div
+          style={{
+            justifyContent: 'center',
+            display: 'flex',
+          }}
+        >
+          <div style={{ width: '25rem' }}>
+            <Story />
+          </div>
+        </div>
+      </S_Container>
+    ),
+  ],
 } as Meta
 
 export const Template: Story<dropdownSelectProps> =
-  (args) => (
-    <div style={{ maxWidth: '20rem' }}>
-      <DropdownSelect {...args} />
-    </div>
-  )
+  (args) => <DropdownSelect {...args} />
 
 export const Tags: Story<dropdownSelectProps> = (
   args,
 ) => (
-  <div style={{ maxWidth: '20rem' }}>
-    <DropdownSelect
-      {...args}
-      isMulti
-      isSearchable
-      isCreable
-    />
-  </div>
+  <DropdownSelect
+    {...args}
+    isMulti
+    isSearchable
+    isCreable
+  />
 )

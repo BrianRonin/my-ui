@@ -1,19 +1,26 @@
 import { ChangeEvent, ReactNode } from 'react'
 import * as S from './styles'
 import { AiFillCloseCircle } from 'react-icons/ai'
-import { useState } from 'react'
+import {
+  useState,
+  InputHTMLAttributes,
+} from 'react'
 
 export type inputProps = {
   label: string
   name: string
   type?: any
   disabled?: boolean
-  onChange?: (value: string) => any
+  onChange?: (
+    value: string,
+    event: ChangeEvent<HTMLInputElement>,
+  ) => any
   errorMessage?: string
   value?: string
   icon?: ReactNode
   as?: 'input' | 'textarea'
   reference?: HTMLInputElement | null
+  meta?: InputHTMLAttributes<HTMLInputElement>
 }
 
 export const Input = ({
@@ -26,6 +33,7 @@ export const Input = ({
   value = '',
   icon = false,
   as = 'input',
+  meta,
 }: inputProps) => {
   const [hasValue, setHasValue] = useState(false)
   const [inputValue, setInputValue] = useState('')
@@ -35,7 +43,7 @@ export const Input = ({
   ) => {
     const inputValue = e.target.value
     if (inputValue) {
-      onChange && onChange(inputValue)
+      onChange && onChange(inputValue, e)
       !hasValue && setHasValue(true)
       setInputValue(inputValue)
     } else {
@@ -55,16 +63,17 @@ export const Input = ({
         hasIcon={!!icon}
       >
         <S.Input
+          {...meta}
           type={type}
           name={name}
           id={name}
           disabled={disabled}
-          onChange={handleChange}
           placeholder={label}
           errorMessage={errorMessage}
           value={inputValue}
           as={as}
           defaultValue={value}
+          onChange={handleChange}
         />
         <S.Label htmlFor={name} element={as}>
           {label}

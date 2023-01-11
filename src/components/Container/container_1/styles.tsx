@@ -14,7 +14,7 @@ export const Inside = styled.div`
     overflow: hidden;
     @media ${theme.media.lMedium} {
       &:hover {
-        box-shadow: 0 0 1rem ${theme.colors.white[3]};
+        box-shadow: 0 0 1rem ${theme.colors.white[5]};
       }
     }
   `}

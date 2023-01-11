@@ -11,6 +11,12 @@ export default {
   title: 'components/Button/Button_0',
   component: Button,
   args: mock_button,
+  parameters: {
+    layout: 'fullscren',
+    background: {
+      disable: true,
+    },
+  },
   decorators: [
     (Story) => (
       <S_Container
@@ -34,9 +40,12 @@ export const WithIcon: Story<buttonProps> = (
   args,
 ) => <Button {...args} icon={<CgAddR />} />
 
-Template.parameters = {
-  layout: 'fullscren',
-  background: {
-    disable: true,
-  },
-}
+export const OnlyIcon: Story<buttonProps> = (
+  args,
+) => (
+  <Button
+    {...args}
+    icon={<CgAddR />}
+    children={undefined}
+  />
+)

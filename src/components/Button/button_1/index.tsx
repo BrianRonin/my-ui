@@ -2,24 +2,24 @@ import * as S from './styles'
 import { IconType } from 'react-icons'
 import { inject_styles } from '../../../types/emotion'
 
-export type buttonWithIconStyles = {
+export type buttonStyles = {
   Main?: inject_styles
   Button?: inject_styles
   Content?: inject_styles
   Text?: inject_styles
 }
 
-export type buttonWithIconProps = {
+export type buttonProps = {
   text: string
   Icon: IconType | any
-  styles?: buttonWithIconStyles
+  styles?: buttonStyles
 }
 
-export const ButtonWithIcon = ({
+export const Button = ({
   text,
   Icon,
   styles,
-}: buttonWithIconProps) => {
+}: buttonProps) => {
   return (
     <S.Main styles={styles?.Main}>
       <S.Button styles={styles?.Button}>

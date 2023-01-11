@@ -1,7 +1,8 @@
-import { buttonWithIconProps } from '.'
+import { buttonProps } from '.'
 import { css, Theme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { inject_styles } from '../../../types/emotion'
+import { dynamicButton } from '../../../styles/css/dynamic-button'
 
 export const Main = styled.div<{
   styles?: inject_styles
@@ -31,6 +32,7 @@ export const Button = styled.button<{
   styles?: inject_styles
 }>`
   ${({ theme, styles }) => css`
+    ${dynamicButton()}
     position: relative;
     display: flex;
     border: 0;
@@ -49,7 +51,7 @@ export const Button = styled.button<{
       left,
       var(--bg-icon) var(--bg-icon-size),
       var(--bg-text) 0
-    );
+      );
     :hover {
       color: ${theme.colors.bg[0]};
     }

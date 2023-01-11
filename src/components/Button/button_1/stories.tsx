@@ -3,17 +3,14 @@ import {
   Story,
 } from '@storybook/react/types-6-0'
 
-import {
-  ButtonWithIcon,
-  buttonWithIconProps,
-} from '.'
+import { Button, buttonProps } from '.'
 import { S_Container } from '../../Container/container_0/styles'
-import { mock_button_with_icon } from './mock'
+import { mock_button } from './mock'
 
 export default {
-  title: 'components/Button/Button_with_icon_0',
-  component: ButtonWithIcon,
-  args: mock_button_with_icon,
+  title: 'components/Button/Button_1',
+  component: Button,
+  args: mock_button,
   decorators: [
     (Story) => (
       <S_Container
@@ -29,8 +26,9 @@ export default {
   ],
 } as Meta
 
-export const Template: Story<buttonWithIconProps> =
-  (args) => <ButtonWithIcon {...args} />
+export const Template: Story<buttonProps> = (
+  args,
+) => <Button {...args} />
 
 Template.parameters = {
   backgrounds: {

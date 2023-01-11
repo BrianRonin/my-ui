@@ -46,7 +46,7 @@ export const inputContainer = styled.div<{
       width: 2.5rem;
       height: 2.5rem;
       color: ${theme.colors._primary[2]};
-      z-index: ${theme.layers.layer1};
+      z-index: ${theme.layers[0]};
       ${!!errorMesage &&
       css`
         color: ${theme.colors.warning[3]};
@@ -67,7 +67,7 @@ export const inputContainer = styled.div<{
       > svg {
         pointer-events: all;
         &:hover {
-          z-index: ${theme.layers.layer2};
+          z-index: ${theme.layers[1]};
           cursor: pointer;
           color: ${theme.colors.info[3]};
         }
@@ -97,10 +97,9 @@ export const Input = styled.input<StyledInputType>`
       opacity: 0;
     }
     &:focus {
-      border: ${theme.spacings.xxtiny} solid
-        ${theme.colors.primary[3]};
+      border: ${theme.spacings.xxtiny} solid ${theme.colors.primary[3]};
       box-shadow: 0px 0px ${theme.sizes.small}
-        ${theme.colors.primary[0]};
+      ${theme.name === 'default' ? theme.colors.white[10] : theme.colors.primary[1]};
     }
     &:focus
       + ${Label},
@@ -142,13 +141,13 @@ export const Label = styled.label<{
     left: ${theme.spacings.xsmall};
     font-size: ${theme.fonts.sizes.small};
     height: ${theme.fonts.sizes.small};
-    transition: ${theme.transitions.fast};
+    transition: ${theme.transitions[2]};
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     line-height: 1;
     pointer-events: none;
-    z-index: ${theme.layers.layer1};
+    z-index: ${theme.layers[0]};
     color: ${theme.colors.info[3]};
     border-radius: ${theme.spacings.tiny};
     ${element === 'textarea' &&
@@ -161,7 +160,6 @@ export const Label = styled.label<{
 export const ErrorMessage = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.warning[3]};
-    margin: ${theme.spacings.xxsmall} 0
-      ${theme.spacings.large};
+    margin: ${theme.spacings.xxsmall} 0 ${theme.spacings.large};
   `}
 `
