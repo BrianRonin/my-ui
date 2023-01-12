@@ -2,7 +2,7 @@ import { buttonProps } from '.'
 import { css, Theme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { inject_styles } from '../../../types/emotion'
-import { dynamicButton } from '../../../styles/css/dynamic-button'
+import { dynamicButton } from '../../../styles/css/dynamic-button.css'
 
 export const Main = styled.div<{
   styles?: inject_styles
